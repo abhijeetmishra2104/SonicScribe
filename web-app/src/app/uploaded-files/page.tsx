@@ -41,7 +41,7 @@ export default function UploadedFilesPage() {
   }));
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-start p-6">
+    <div className="min-h-screen font-inter bg-black text-white flex flex-col items-center justify-start p-6">
     <h1 className="text-3xl font-bold mb-6">Uploaded Files</h1>
 
     {loading ? (
