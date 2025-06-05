@@ -11,10 +11,20 @@
       "static/chunks/main-app.js",
       "static/chunks/app/upload/page.js"
     ],
-    "/page": [
+    "/api/upload/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+      "static/chunks/app/api/upload/route.js"
+    ],
+    "/uploaded-files/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/uploaded-files/page.js"
+    ],
+    "/api/get-uploaded-files/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/get-uploaded-files/route.js"
     ]
   }
 }
