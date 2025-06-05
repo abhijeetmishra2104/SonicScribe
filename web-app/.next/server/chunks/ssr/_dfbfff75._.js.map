@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 6, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
-    {"offset": {"line": 24, "column": 0}, "map": {"version":3,"sources":["file:///Users/abhijeetmishra/Developer/Projects/sonic-scribe/src/app/page.tsx"],"sourcesContent":["\nimport { div } from \"motion/react-client\";\nimport Image from \"next/image\";\n\nexport default function Home() {\n  return (\n    div\n  );\n}\n"],"names":[],"mappings":";;;AACA;;AAGe,SAAS;IACtB,OACE,yKAAA,CAAA,MAAG;AAEP","debugId":null}}]
-}
