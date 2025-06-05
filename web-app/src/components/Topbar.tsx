@@ -3,8 +3,7 @@ import { TopBar } from "./ui/top-bar";
 export default function SaaSTopBar() {
   return (
     <div className="min-h-screen bg-black">
-   <TopBar session={null} />
-
+      <TopBar />
 
       {/* Demo content to show the fixed header behavior */}
       <div className="pt-16">
@@ -42,5 +41,5 @@ export default function SaaSTopBar() {
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -1,8 +1,7 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
 import { Inter, Source_Serif_4 } from "next/font/google";
-import { TopBar } from "@/components/ui/top-bar";
-import { Providers } from "./provider";  // Import the provider
 
 const inter = Inter({
   variable: "--font-inter",
@@ -30,11 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${sourceSerif4.variable}`}>
       <body className="antialiased bg-background text-foreground">
-        <Providers>    {/* Wrap children and TopBar inside Providers */}
-        <TopBar session={null} />
-
-          <main>{children}</main>
-        </Providers>
+        {children}
       </body>
     </html>
   );
