@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, Zap } from "lucide-react"
+import Link from "next/link"
 
 export function TopBar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -49,9 +50,11 @@ export function TopBar() {
             <Button variant="ghost" className="text-gray-300 hover:text-white hover:bg-gray-800/50">
               Sign In
             </Button>
-            <Button className="bg-gray-200 text-black border-0 shadow-lg hover:shadow-blue-500/25 hover:bg-gray-400 transition-all duration-300">
-              Get Started
-            </Button>
+            <Link href="/upload">
+              <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-4 py-2 rounded">
+                Get Started
+              </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}

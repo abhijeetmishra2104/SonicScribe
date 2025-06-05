@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  sonic-app:
+    container_name: sonic-app
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app            # Mount source code
+      - /app/node_modules # Prevent node_modules from syncing with host
+    environment:
+      - NODE_ENV=development

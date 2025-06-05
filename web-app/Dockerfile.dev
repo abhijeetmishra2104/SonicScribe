@@ -1,0 +1,20 @@
+# Use the Node.js LTS image
+FROM node:18
+
+# Set working directory
+WORKDIR /app
+
+# Only copy package.json files initially to install deps
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy rest of the project files
+COPY . .
+
+# Expose Next.js default dev port
+EXPOSE 3000
+
+# Start Next.js in dev mode with hot reload
+CMD ["npm", "run", "dev"]

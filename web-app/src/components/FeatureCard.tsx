@@ -65,7 +65,7 @@ export function FeatureCards() {
         {/* Left Side */}
         <div className="lg:w-1/3 text-center lg:text-left space-y-6">
           <h2 className="text-4xl sm:text-5xl font-bold font-inter leading-tight">
-            Built for <ColourfulText text="Doctors." /> <br /> Designed for scale.
+            Built for <ColourfulText text="People." /> <br /> Designed for scale.
           </h2>
           <p className="text-gray-600 text-lg font-inter">
             SonicScript AI helps teams move fast, build efficiently, and scale across platforms with confidence.
