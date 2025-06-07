@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Healthcare Assistant</title>
+</head>
+<body>
+    <h2>Healthcare Assistant</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <label>Enter Symptoms (Text):</label><br>
+        <textarea name="text_input" rows="4" cols="50" placeholder="E.g. fever, sore throat, muscle pain"></textarea><br><br>
+
+        <label>OR Upload Audio File:</label><br>
+        <input type="file" name="audio_file"><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if transcript %}
+        <h4>Transcribed Audio:</h4>
+        <pre>{{ transcript }}</pre>
+    {% endif %}
+
+    {% if response %}
+        <h3>AI Healthcare Response:</h3>
+        <pre>{{ response }}</pre>
+    {% endif %}
+</body>
+</html>
