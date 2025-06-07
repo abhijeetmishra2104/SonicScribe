@@ -77,3 +77,9 @@ logs/
 *.tmp
 *.temp
 *.old
+
+
+
+
+ai-model/venv/
+**/venv/
