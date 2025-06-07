@@ -1,7 +1,16 @@
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Healthcare Assistant</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <h2>Healthcare Assistant</h2>
@@ -11,6 +20,9 @@
 
         <label>OR Upload Audio File:</label><br>
         <input type="file" name="audio_file"><br><br>
+
+        <label>Location :</label><br>
+        <input type="text" name="location"><br><br>
 
         <input type="submit" value="Submit">
     </form>
@@ -24,5 +36,26 @@
         <h3>AI Healthcare Response:</h3>
         <pre>{{ response }}</pre>
     {% endif %}
+
+    {% if map_points %}
+        <h3>Nearby Hospitals/Specialists in {{ location.title() }}:</h3>
+        <div id="map"></div>
+    {% endif %}
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        {% if map_points %}
+        var map = L.map('map').setView([{{ map_points[0].lat }}, {{ map_points[0].lon }}], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(map);
+
+        {% for point in map_points %}
+        L.marker([{{ point.lat }}, {{ point.lon }}]).addTo(map)
+            .bindPopup(`{{ point.info|safe }}`);
+        {% endfor %}
+
+        {% endif %}
+    </script>
 </body>
 </html>
