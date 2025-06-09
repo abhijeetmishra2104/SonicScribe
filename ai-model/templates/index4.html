@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Risk Prediction</title>
+    <style>
+        body { font-family: Arial; padding: 40px; }
+        input, select, button { margin: 8px 0; padding: 8px; width: 300px; }
+    </style>
+</head>
+<body>
+    <h2>Enter Patient Details</h2>
+    <form method="POST">
+        Age: <input type="number" name="age" required><br>
+        Gender:
+        <select name="gender" required>
+            <option value="0">Male</option>
+            <option value="1">Female</option>
+        </select><br>
+        Primary Diagnosis (as int): <input type="number" name="primary_diagnosis" required><br>
+        Number of Procedures: <input type="number" name="num_procedures" required><br>
+        Days in Hospital: <input type="number" name="days_in_hospital" required><br>
+        Comorbidity Score: <input type="number" name="comorbidity_score" required><br>
+        Discharge To (as int): <input type="number" name="discharge_to" required><br>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if risk is not none %}
+        <h3>Predicted Risk: {{ risk | round(2) }}%</h3>
+        <h3>Decision: {{ decision }}</h3>
+    {% endif %}
+</body>
+</html>
