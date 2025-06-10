@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  flask-app1:
+    build:
+      context: ./ai-model
+      dockerfile: Dockerfile.app1
+    container_name: flask-app1
+    ports:
+      - "5050:5000"
+    volumes:
+      - ./ai-model:/app
+    environment:
+      - FLASK_ENV=development
+
+  flask-app2:
+    build:
+      context: ./ai-model
+      dockerfile: Dockerfile.app2
+    container_name: flask-app2
+    ports:
+      - "5051:5001"
+    volumes:
+      - ./ai-model:/app
+    environment:
+      - FLASK_ENV=development
+
+  flask-app4:
+    build:
+      context: ./ai-model
+      dockerfile: Dockerfile.app4
+    container_name: flask-app4
+    ports:
+      - "5052:5002"
+    volumes:
+      - ./ai-model:/app
+    environment:
+      - FLASK_ENV=development
+
+  next-app:
+    env_file:
+      - ./web-app/.env
+    build:
+      context: ./web-app
+    container_name: next-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./web-app:/app
+      - /app/node_modules
+      - ./web-app/.env:/app/.env 
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - flask-app1
+      - flask-app2
+      - flask-app4

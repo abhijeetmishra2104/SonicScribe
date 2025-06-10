@@ -1,5 +1,10 @@
 {
   "pages": {
+    "/api/auth/[...nextauth]/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/auth/[...nextauth]/route.js"
+    ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -16,15 +21,25 @@
       "static/chunks/main-app.js",
       "static/chunks/app/api/upload/route.js"
     ],
-    "/uploaded-files/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/uploaded-files/page.js"
+      "static/chunks/app/page.js"
     ],
-    "/api/get-uploaded-files/route": [
+    "/auth/signin/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/api/get-uploaded-files/route.js"
+      "static/chunks/app/auth/signin/page.js"
+    ],
+    "/api/symptom-upload/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/symptom-upload/route.js"
+    ],
+    "/api/risk-prediction/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/risk-prediction/route.js"
     ]
   }
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { HeroSection } from "@/components/Herosection";
-import { TopBar } from "@/components/ui/top-bar";
+import { TopBar } from "@/components/Topbar";
 import { FeatureCards } from "@/components/FeatureCard";
 import { TestimonialSection } from "@/components/TestimonialSection";
 import  Contact  from "@/components/Contact";

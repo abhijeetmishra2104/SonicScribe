@@ -20,4 +20,4 @@ openai
 seaborn
 matplotlib
 joblib
-
+flask-cors

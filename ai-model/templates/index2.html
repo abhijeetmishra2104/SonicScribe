@@ -23,6 +23,9 @@
     {% if response %}
         <h3>AI Healthcare Response:</h3>
         <pre>{{ response }}</pre>
+        <textarea id="output" style="display:none;">{{ response or '' }}</textarea>
+    {% else %}
+        <textarea id="output" style="display:none;"></textarea>
     {% endif %}
 </body>
 </html>

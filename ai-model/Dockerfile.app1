@@ -1,0 +1,19 @@
+FROM python:3.10
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gnupg \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Git (already signed repos)
+RUN apt-get update \
+  && apt-get -o Acquire::AllowInsecureRepositories=true \
+             -o Acquire::AllowDowngradeToInsecureRepositories=true \
+             install -y --allow-unauthenticated git \
+  && apt-get clean
+# Continue setup
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+CMD ["python", "app.py"]

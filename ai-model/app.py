@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from flask_cors import CORS
 load_dotenv()
 
 os.environ['OPENAI_API_KEY']=os.getenv("OPENAI_API_KEY")
@@ -18,6 +19,7 @@ os.environ["LANGCHAIN_PROJECT"]=os.getenv("LANGCHAIN_PROJECT")
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
+CORS(app)
 
 # Load Whisper model
 model = whisper.load_model("base") 
@@ -53,6 +55,25 @@ def index():
             
     return render_template('index.html', transcript=transcript)
 
+@app.route('/process-audio-url', methods=['POST'])
+def process_audio_url():
+    data = request.get_json()
+    audio_url = data.get('url')
+
+    if not audio_url:
+        return jsonify({"error": "No audio URL provided"}), 400
+
+    # Download audio from URL
+    import requests
+    with requests.get(audio_url, stream=True) as r:
+        with open("temp_audio.mp3", 'wb') as f:
+            for chunk in r.iter_content(chunk_size=8192):
+                f.write(chunk)
+
+    result = model.transcribe("temp_audio.mp3", task="translate")
+    response = chain.invoke({"input": result["text"]})
+    return jsonify({"result": response})
+
     
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(host="0.0.0.0", port=5050, debug=True)

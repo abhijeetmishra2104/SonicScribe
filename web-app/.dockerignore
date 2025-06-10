@@ -8,4 +8,3 @@ node_modules
 Dockerfile
 Dockerfile.dev
 docker-compose.yml
-.env

@@ -20,11 +20,8 @@ export async function POST(req: NextRequest) {
   }
 
   const buffer = Buffer.from(await file.arrayBuffer());
-
-  // Convert buffer to readable stream
   const stream = Readable.from(buffer);
 
-  // Upload to Cloudinary
   const uploadResult = await new Promise((resolve, reject) => {
     const streamUpload = cloudinary.uploader.upload_stream(
       {
@@ -41,7 +38,6 @@ export async function POST(req: NextRequest) {
 
   const result = uploadResult as any;
 
-  // Save info in PostgreSQL via Prisma
   const dbRecord = await prisma.audioFile.create({
     data: {
       url: result.secure_url,
@@ -51,5 +47,19 @@ export async function POST(req: NextRequest) {
     },
   });
 
-  return NextResponse.json({ success: true, file: dbRecord });
+  // 🔥 Send the Cloudinary URL to Flask app
+  const flaskResponse = await fetch('http://localhost:5050/process-audio-url', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ url: result.secure_url }),
+});
+
+  const aiResult = await flaskResponse.json();
+
+  return NextResponse.json({
+    success: true,
+    file: dbRecord,
+    analysis: aiResult.result, // 🧠 AI model's result
+  });
 }
+
