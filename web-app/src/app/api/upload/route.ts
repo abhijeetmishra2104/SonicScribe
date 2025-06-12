@@ -48,18 +48,25 @@ export async function POST(req: NextRequest) {
   });
 
   // 🔥 Send the Cloudinary URL to Flask app
-  const flaskResponse = await fetch('http://localhost:5050/process-audio-url', {
+  const flaskResponse = await fetch('http://flask-app1:5050/process-audio-url', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({ url: result.secure_url }),
 });
 
-  const aiResult = await flaskResponse.json();
-
+  const text = await flaskResponse.text();
+  console.error("❌ RAW response from Flask:", text);
+try {
+  const aiResult = JSON.parse(text);
   return NextResponse.json({
     success: true,
     file: dbRecord,
-    analysis: aiResult.result, // 🧠 AI model's result
+    analysis: aiResult.result,
   });
+} catch (e) {
+  console.error("❌ JSON parsing failed. Raw response:", text);
+  return NextResponse.json({ error: "Flask response not JSON", raw: text }, { status: 500 });
+}
+
 }
 

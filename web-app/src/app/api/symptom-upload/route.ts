@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const response = await fetch('http://localhost:5001/analyze', {
+    const response = await fetch('http://flask-app2:5001/analyze', {
   method: 'POST',
   body: flaskFormData as any,
 });

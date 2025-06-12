@@ -81,7 +81,7 @@ export function TopBar() {
               </Button>
             )}
             <Link href="/upload">
-              <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-4 py-2 rounded">
+              <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-4 py-2 rounded cursor-pointer">
                 Get Started
               </button>
             </Link>

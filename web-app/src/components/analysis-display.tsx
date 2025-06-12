@@ -489,8 +489,8 @@ export default function AnalysisDisplay({ analysis }: AnalysisDisplayProps) {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <CardContent className="p-6 pt-2">
-                        <Badge className="bg-purple-800 hover:bg-purple-700 text-white text-md py-1 px-3">
+                      <CardContent className="p-6 pt-2 max-w-full overflow-x-auto">
+                        <Badge className="bg-purple-800 hover:bg-purple-700 text-white text-md py-1 px-3 break-words whitespace-normal max-w-full">
                           {highlightMedicalTerms(data.possibleDisease)}
                         </Badge>
                       </CardContent>

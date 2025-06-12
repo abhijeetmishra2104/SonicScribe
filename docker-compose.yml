@@ -10,6 +10,7 @@ services:
       - "5050:5000"
     volumes:
       - ./ai-model:/app
+      - whisper-cache:/root/.cache/whisper
     environment:
       - FLASK_ENV=development
 
@@ -22,6 +23,7 @@ services:
       - "5051:5001"
     volumes:
       - ./ai-model:/app
+      - whisper-cache:/root/.cache/whisper
     environment:
       - FLASK_ENV=development
 
@@ -34,6 +36,7 @@ services:
       - "5052:5002"
     volumes:
       - ./ai-model:/app
+      - whisper-cache:/root/.cache/whisper
     environment:
       - FLASK_ENV=development
 
@@ -55,3 +58,6 @@ services:
       - flask-app1
       - flask-app2
       - flask-app4
+
+volumes:
+  whisper-cache:

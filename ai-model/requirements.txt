@@ -21,3 +21,4 @@ seaborn
 matplotlib
 joblib
 flask-cors
+scikit-learn
