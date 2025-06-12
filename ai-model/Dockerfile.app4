@@ -1,19 +1,22 @@
-FROM python:3.10
+FROM python:3.10-slim
 
+# Install minimal system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    gnupg \
-    ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
-# Install Git (already signed repos)
-RUN apt-get update \
-  && apt-get -o Acquire::AllowInsecureRepositories=true \
-             -o Acquire::AllowDowngradeToInsecureRepositories=true \
-             install -y --allow-unauthenticated git \
-  && apt-get clean
+    git \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Continue setup
+# Set working directory
 WORKDIR /app
+
+# Install Python dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy source code
 COPY . .
+
+# Expose port if needed (optional; usually 5000 for Flask apps)
+EXPOSE 5000
+
+# Start the app
 CMD ["python", "app4.py"]
