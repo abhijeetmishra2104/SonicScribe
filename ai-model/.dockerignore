@@ -1,7 +1,32 @@
-venv
-__pycache__
+# Python cache & env
+venv/
+__pycache__/
 *.pyc
-.git
+*.pyo
+*.pyd
+
+# Git
+.git/
 .gitignore
-node_modules
+
+# Node (just in case)
+node_modules/
+
+# Logs
 *.log
+
+# Large files not needed in the Docker image
+*.ipynb
+*.pkl
+*.mp3
+*.wav
+uploads/
+audio/
+Dataset/
+
+# Secrets
+.env
+*.env
+
+# Jupyter
+.ipynb_checkpoints/
