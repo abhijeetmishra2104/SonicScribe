@@ -60,9 +60,9 @@ export default function UploadPage() {
   const [loading, setLoading] = useState(false);
   const [analysis, setAnalysis] = useState<string | null>(null);
   // Add at top of your component
-const [gender, setGender] = useState("");
-const [primaryDiagnosis, setPrimaryDiagnosis] = useState("");
-const [dischargeTo, setDischargeTo] = useState("");
+  const [gender, setGender] = useState("");
+  const [primaryDiagnosis, setPrimaryDiagnosis] = useState("");
+  const [dischargeTo, setDischargeTo] = useState("");
 
 
   async function handleUpload(files: File[]) {
@@ -216,6 +216,12 @@ function handleSymptomTextChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
   const [decision, setDecision] = useState<string | null>(null);
   return (
     <div className="min-h-screen bg-black text-inter text-white pt-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 className="text-3xl font-bold mb-6 text-center">SonicScribe AI</h1>
+        <p className="text-center text-gray-400 mb-10">
+          Choose a feature to get started with AI-powered healthcare solutions.
+        </p>
+      </div>
       <div className="flex justify-center gap-6 flex-wrap mt-10">
   {features.map((f) => (
     <CardSpotlight
