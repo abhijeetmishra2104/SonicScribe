@@ -5,6 +5,13 @@ __pycache__/
 *.pyo
 *.pyd
 
+ai-model/venv/
+ai-model/__pycache__/
+ai-model/*.pkl
+ai-model/*.ipynb
+ai-model/audio/
+ai-model/uploads/
+
 # Git
 .git/
 .gitignore
