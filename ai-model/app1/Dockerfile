@@ -9,10 +9,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /app
 
 # Copy only necessary files
-COPY requirements.txt .
+COPY ai-model/app1/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app.py .
+COPY ai-model/app1/app.py .
 
 EXPOSE 5000
 
