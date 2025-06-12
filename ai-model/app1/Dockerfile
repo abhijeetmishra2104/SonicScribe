@@ -1,23 +1,19 @@
 FROM python:3.10-slim
 
-# Install system dependencies (ffmpeg and git)
+# Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg \
     git \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Set working directory
 WORKDIR /app
 
-# Install Python dependencies
+# Copy only necessary files
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy source code
-COPY . .
+COPY app.py .
 
-# Expose port (important for Railway)
 EXPOSE 5000
 
-# Default command
 CMD ["python", "app.py"]

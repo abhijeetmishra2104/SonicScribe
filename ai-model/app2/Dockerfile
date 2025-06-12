@@ -1,22 +1,17 @@
 FROM python:3.10-slim
 
-# Install minimal system dependencies
+# Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Set working directory
 WORKDIR /app
 
-# Install Python dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy source code
-COPY . .
+COPY app.py .
 
-# Expose port if needed (optional; usually 5000 for Flask apps)
 EXPOSE 5000
 
-# Start the app
-CMD ["python", "app4.py"]
+CMD ["python", "app.py"]

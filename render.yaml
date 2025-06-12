@@ -3,12 +3,12 @@ services:
     name: flask-app1
     env: docker
     repo: https://github.com/abhijeetmishra2104/SonicScribe
-    dockerfilePath: ai-model/Dockerfile.app1
+    dockerfilePath: ai-model/app1/Dockerfile
     plan: free
-    region: oregon
+    region: singapore
     buildFilter:
       paths:
-        - ai-model/**
+        - ai-model/app1/**
     envVars:
       - key: FLASK_ENV
         value: development
@@ -18,12 +18,12 @@ services:
     name: flask-app2
     env: docker
     repo: https://github.com/abhijeetmishra2104/SonicScribe
-    dockerfilePath: ai-model/Dockerfile.app2
+    dockerfilePath: ai-model/app2/Dockerfile
     plan: free
-    region: oregon
+    region: singapore
     buildFilter:
       paths:
-        - ai-model/**
+        - ai-model/app2/**
     envVars:
       - key: FLASK_ENV
         value: development
@@ -33,12 +33,12 @@ services:
     name: flask-app4
     env: docker
     repo: https://github.com/abhijeetmishra2104/SonicScribe
-    dockerfilePath: ai-model/Dockerfile.app4
+    dockerfilePath: ai-model/app4/Dockerfile
     plan: free
-    region: oregon
+    region: singapore
     buildFilter:
       paths:
-        - ai-model/**
+        - ai-model/app4/**
     envVars:
       - key: FLASK_ENV
         value: development
