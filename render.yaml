@@ -8,7 +8,9 @@ services:
     region: singapore
     buildFilter:
       paths:
-        - ai-model/app1/**
+        - ai-model/app1/app.py
+        - ai-model/app1/requirements.txt
+        - ai-model/app1/Dockerfile
     envVars:
       - key: FLASK_ENV
         value: development
@@ -23,7 +25,9 @@ services:
     region: singapore
     buildFilter:
       paths:
-        - ai-model/app2/**
+        - ai-model/app2/app.py
+        - ai-model/app2/requirements.txt
+        - ai-model/app2/Dockerfile
     envVars:
       - key: FLASK_ENV
         value: development
@@ -38,7 +42,9 @@ services:
     region: singapore
     buildFilter:
       paths:
-        - ai-model/app4/**
+        - ai-model/app4/app.py
+        - ai-model/app4/requirements.txt
+        - ai-model/app4/Dockerfile
     envVars:
       - key: FLASK_ENV
         value: development
