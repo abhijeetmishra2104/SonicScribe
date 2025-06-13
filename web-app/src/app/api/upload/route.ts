@@ -55,7 +55,6 @@ export async function POST(req: NextRequest) {
 });
 
   const text = await flaskResponse.text();
-  console.error("❌ RAW response from Flask:", text);
 try {
   const aiResult = JSON.parse(text);
   return NextResponse.json({

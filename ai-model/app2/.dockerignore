@@ -1,0 +1,17 @@
+*.mp3
+*.pkl
+*.ipynb
+*.json
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.vscode/
+Dataset/
+audio/
+uploads/
+templates/
+model/
+venv/
+node_modules/
+web-app/
