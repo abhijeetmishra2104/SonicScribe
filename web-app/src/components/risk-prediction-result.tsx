@@ -64,15 +64,12 @@ export function PredictionResultCard({ risk, decision }: PredictionResultProps) 
                 value={risk}
                 className={cn(
                   "h-2 bg-gray-800",
-                  risk < 30 ? "bg-emerald-900/30" : risk < 70 ? "bg-amber-900/30" : "bg-red-900/30",
-                )}
-                indicatorClassName={cn(
-                  "bg-gradient-to-r",
                   risk < 30
-                    ? "from-emerald-500 to-emerald-400"
+                    ? "bg-emerald-900/30 [&_.progress-bar]:from-emerald-500 [&_.progress-bar]:to-emerald-400"
                     : risk < 70
-                      ? "from-amber-500 to-amber-400"
-                      : "from-red-500 to-red-400",
+                      ? "bg-amber-900/30 [&_.progress-bar]:from-amber-500 [&_.progress-bar]:to-amber-400"
+                      : "bg-red-900/30 [&_.progress-bar]:from-red-500 [&_.progress-bar]:to-red-400",
+                  "bg-gradient-to-r"
                 )}
               />
             </div>

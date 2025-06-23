@@ -17,7 +17,6 @@ def predict():
     try:
         data = request.get_json()
 
-        # Extract input values
         age = int(data['age'])
         gender = int(data['gender'])
         primary_diagnosis = int(data['primaryDiagnosis'])
@@ -26,8 +25,11 @@ def predict():
         comorbidity_score = int(data['comorbidityScore'])
         discharge_to = int(data['dischargeTo'])
 
-        features = np.array([[age, gender, primary_diagnosis, num_procedures,
-                              days_in_hospital, comorbidity_score, discharge_to]])
+        import pandas as pd
+        features = pd.DataFrame([[age, gender, primary_diagnosis, num_procedures,
+                                  days_in_hospital, comorbidity_score, discharge_to]],
+                                columns=["age", "gender", "primary_diagnosis", "num_procedures",
+                                         "days_in_hospital", "comorbidity_score", "discharge_to"])
 
         risk = model.predict_proba(features)[0][1] * 100
         decision = "Hospitalize Patient" if risk > 50 else "No Hospitalization Needed"
